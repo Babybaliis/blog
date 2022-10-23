@@ -9,12 +9,16 @@ import api from "../api/api";
 import {Pagination} from "antd";
 import 'antd/dist/antd.css';
 import {FullArticleItem} from "../full-article-item/full-article-item";
+import {SignUp} from "../sign-up/sign-up";
+import {SignIn} from "../sign-in/sign-in";
+import {Profile} from "../profile/profile";
+import {useCookies} from "react-cookie";
 
 
 const App = () => {
-    const {updateList} = articlesSlice.actions;
+    const {updateList,updateUser} = articlesSlice.actions;
+    const [cookies, setCookies, removeCookie] = useCookies(['token']);
     const dispatch = useAppDispatch();
-
     const {articles} = useAppSelector((state) => state.articlesReducer);
     const [sortArticles, setSortArticles] = useState<Article[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -24,6 +28,10 @@ const App = () => {
                 dispatch(updateList(res));
                 setIsLoading(false)
             },)
+
+            if (!!cookies.token){
+                api.getUser(cookies.token).then(user => dispatch(updateUser(user)))
+            }
         }, []
     );
 
@@ -33,9 +41,14 @@ const App = () => {
             <Router>
                 <Header/>
                 <Routes>
-                    <Route path={'/'} element={<ArticlesList articles={articles} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
-                    <Route path={'/articles'} element={<ArticlesList articles={articles} isLoading={isLoading} setIsLoading={setIsLoading}/>}/>
+                    <Route path={'/'} element={<ArticlesList articles={articles} isLoading={isLoading}
+                                                             setIsLoading={setIsLoading}/>}/>
+                    <Route path={'/articles'} element={<ArticlesList articles={articles} isLoading={isLoading}
+                                                                     setIsLoading={setIsLoading}/>}/>
                     <Route path={'/articles/:slug'} element={<FullArticleItem/>}/>
+                    <Route path={'/sign-up'} element={<SignUp/>}/>
+                    <Route path={'/sign-in'} element={<SignIn/>}/>
+                    <Route path={'/profile'} element={<Profile/>}/>
                 </Routes>
 
             </Router>

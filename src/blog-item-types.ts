@@ -13,3 +13,11 @@ export type Author = {
     image: string
     username: string
 }
+
+export type User = {
+    email: string,
+    token?: string,
+    username: string,
+    image: string,
+    [key:string]:any
+}

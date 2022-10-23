@@ -5,4 +5,4 @@ export const Section = styled.section`
   width: 100%;
   height: auto;
   background-color: rgba(203, 230, 248, 0.46);
-`
+  `

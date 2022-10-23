@@ -26,7 +26,6 @@ const ArticleItem = ({article,isFull}: ArticleItemProps) => {
 
     const getDate = (date: string | number) => {
         let d = new Date(date);
-        console.log(d)
         return moment(d).format("MMMM DD, YYYY");
     };
 
@@ -39,7 +38,6 @@ const ArticleItem = ({article,isFull}: ArticleItemProps) => {
                             <Link to={`/articles/${article.slug}`} >{article.title}</Link>
                             {article.author.following}
                         </DivTitle>
-
                     </SpanFlex>
                     <SpanFlex>
                         {article.tagList.map((value, i) => {
@@ -77,7 +75,4 @@ const ArticleItem = ({article,isFull}: ArticleItemProps) => {
     )
 }
 
-export
-{
-    ArticleItem
-}
+export {ArticleItem}

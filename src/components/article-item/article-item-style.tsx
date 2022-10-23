@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const DivItemsList = styled.div`
   width: 941px;
-  
   margin: 26px 0;
   background-color: white;
   border-radius: 5px;
