@@ -2,13 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import articlesReducer from "./hooks";
 
 export const rootReducer = combineReducers({
-   articlesReducer,
+  articlesReducer,
 });
 
 export const setupStore = () => {
-    return configureStore({
-        reducer: rootReducer,
-    });
+  return configureStore({
+    reducer: rootReducer,
+  });
 };
 
 export type RootState = ReturnType<typeof rootReducer>;
