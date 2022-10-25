@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 export const Section = styled.section`
+  height: 100%;
+  margin: 0 auto;
   max-width: 1440px;
+  min-height: 100vh;
   width: 100%;
-  height: auto;
-  background-color: rgba(203, 230, 248, 0.46);
 `;

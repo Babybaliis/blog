@@ -1,5 +1,6 @@
 body {
-  margin:0;
+  margin:0 auto;
+  background-color: rgba(203, 230, 248, 0.46);
 }
 
 .ant-pagination-item, .ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link{
